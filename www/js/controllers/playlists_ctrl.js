@@ -1,4 +1,4 @@
-angular.module('starter.controllers')
+angular.module('dongnat.controllers')
 
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
@@ -10,7 +10,6 @@ angular.module('starter.controllers')
     { title: 'Cowbell', id: 6 }
   ];
 })
-
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });

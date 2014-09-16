@@ -29,7 +29,7 @@ gulp.task('sass', function(done) {
 gulp.task('build_js', function() {
   gulp.src(paths.js)
     .pipe(concat('application.js'))
-    .pipe(gulp.dest('./www/js/build/'));
+    .pipe(gulp.dest('./www/build/'));
 });
 
 gulp.task('watch', function() {
