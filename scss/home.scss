@@ -26,4 +26,21 @@
       }
     }
   }
+  .camera-btn {
+    position: fixed;
+    z-index: 10;
+    bottom: -12px;
+    right: -12px;
+    .icon {
+      font-size: 44px;
+      width: 80px;
+      display: block;
+      text-align: center;
+      line-height: 80px;
+      background: rgb(226, 114, 114);
+      color: #fff;
+      border-radius: 50%;
+      z-index: 10;
+    }
+  }
 }

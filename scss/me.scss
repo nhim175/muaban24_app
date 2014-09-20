@@ -1,9 +1,9 @@
 .me-ctrl {
   .pane {
-    padding-top: $bar-height;
+    padding-top: $bar-height + $status-bar-height;
     padding-bottom: 51px;
   }
-  .profile-img {
+  .profile-img, .profile-default {
     width: 100%;
     border-radius: 50%;
     border: 1px solid #ddd;

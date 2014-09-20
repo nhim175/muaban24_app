@@ -26,10 +26,17 @@ angular.module('dongnat.services')
     }
   };
 
+  var update = function(params) {
+    $http.post(SettingsService.API_URL + '/user/update/' + info().id, { user: JSON.stringify(params.data), token: info().token })
+      .success(params.onSuccess)
+      .error(params.onError);
+  };
+
   return {
     login: login,
     logout: logout,
     info: info,
-    signup: signup
+    signup: signup,
+    update: update
   }
 });

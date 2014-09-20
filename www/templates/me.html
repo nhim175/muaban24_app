@@ -4,14 +4,15 @@
   </ion-nav-buttons>
   <ion-tabs class="tabs-light tabs-icon-only">
 
-    <ion-tab title="Info" icon-on="ion-ios7-person" icon-off="ion-ios7-person-outline">
+    <ion-tab title="Info" icon-on="ion-ios7-person" icon-off="ion-ios7-person-outline" ng-controller="MeCtrl">
       <ion-scroll style="height: 100%;">
         <!-- User info content -->
         <div class="row">
           <div class="col col-50 col-offset-25">
             <label>
-              <img class="profile-img" src="img/avatar.svg" />
-              <input type="file" accept="image/*" ng-hide="true">
+              <img class="profile-img" ng-src="{{PROFILE_PHOTO_URL}}/{{user.profile_image}}" ng-show="user.profile_image" />
+              <img class="profile-default" src="img/avatar.svg" ng-hide="user.profile_image"/>
+              <file-upload class="form-control" file-id="user.profile_image" ng-hide="true"></file-upload>
             </label>
           </div>
         </div>
@@ -45,7 +46,7 @@
             <input type="text" ng-model="user.facebook">
           </label>
           <div class="padding">
-            <button class="button button-block button-positive">Save</button>
+            <button class="button button-block button-positive" ng-click="updateInfo()">Save</button>
           </div>
         </div>
       </ion-scroll>

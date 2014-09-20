@@ -1,9 +1,9 @@
-.bar-header {
-  padding-top: 20px;
-  h1.title {
-    padding-top: 5px;
-  }
-}
+// .bar-header {
+//   padding-top: 20px;
+//   h1.title {
+//     padding-top: 5px;
+//   }
+// }
 
 .pane, .view {
   background: #eee;
@@ -15,12 +15,13 @@
     height: 40px;
     overflow: hidden;
     border-radius: 50%;
+    margin-top: 15px !important;
     img {
       width: 100%;
     }
   }
   .login-btn, .info-btn {
-    line-height: 40px;
+    line-height: 28px;
     padding-left: 10px;
     text-decoration: none;
     color: inherit;
