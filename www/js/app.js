@@ -47,12 +47,12 @@ angular.module('dongnat', ['ionic', 'dongnat.controllers'])
         }
       }
     })
-    .state('app.playlists', {
-      url: "/playlists",
+    .state('app.home', {
+      url: "/home",
       views: {
         'menuContent' :{
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
+          templateUrl: "templates/home.html",
+          controller: 'HomeCtrl'
         }
       }
     })
@@ -73,6 +73,36 @@ angular.module('dongnat', ['ionic', 'dongnat.controllers'])
         'menuContent': {
           templateUrl: "templates/intro.html",
           controller: 'IntroCtrl'
+        }
+      }
+    })
+
+    .state('app.login', {
+      url: "/login",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/login.html",
+          controller: 'LoginCtrl'
+        }
+      }
+    })
+
+    .state('app.signup', {
+      url: "/signup",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/signup.html",
+          controller: 'SignupCtrl'
+        }
+      }
+    })
+
+    .state('app.me', {
+      url: "/me",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/me.html",
+          controller: 'MeCtrl'
         }
       }
     })

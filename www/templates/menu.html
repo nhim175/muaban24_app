@@ -9,12 +9,16 @@
 
   <ion-side-menu side="left">
     <header class="bar bar-header bar-stable">
-      <h1 class="title">Left</h1>
+      <span class="avatar">
+        <img src="img/avatar.svg">
+      </span>
+      <a class="login-btn" ng-hide="user" nav-clear menu-close href="#/app/login">Sign up or sign in</a>
+      <a class="info-btn" ng-show="user" nav-clear menu-close href="#/app/me">{{user.name}}</a>
     </header>
     <ion-content class="has-header">
       <ion-list>
-        <ion-item nav-clear menu-close ng-click="login()">
-          Login
+        <ion-item nav-clear menu-close href="#/app/home">
+          Home
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/search">
           Search
