@@ -1,3 +1,5 @@
+$new-btn-color: rgb(226, 114, 114);
+
 .nav-bar {
   .title img {
     height: 80%;
@@ -31,16 +33,29 @@
     z-index: 10;
     bottom: -12px;
     right: -12px;
+    p {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      margin-top: 10px;
+      margin-left: -5px;
+      font-size: 12px;
+    }
+
     .icon {
       font-size: 44px;
       width: 80px;
       display: block;
       text-align: center;
       line-height: 80px;
-      background: rgb(226, 114, 114);
+      background: $new-btn-color;
       color: #fff;
       border-radius: 50%;
       z-index: 10;
+      &.activated {
+        background: darken($new-btn-color, 10%);
+      }
     }
   }
 }

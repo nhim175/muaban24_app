@@ -23,7 +23,7 @@ angular.module('dongnat.controllers')
 
     var onUpdateSuccess = function(users, status, header, config) {
       $ionicLoading.hide();
-      UserService.info(users[0]);
+      UserService.info(users);
       $rootScope.$broadcast("user::update");
     };
 

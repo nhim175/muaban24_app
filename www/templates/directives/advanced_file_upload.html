@@ -1,0 +1,6 @@
+<div class="advanced-file-upload">
+  <input type="file" />
+  <i class="icon ion-ios7-plus-empty" ng-show="state=='empty'"></i>
+  <i class="icon ion-loading-c" ng-show="state=='loading'"></i>
+  <img class="thumb" src="{{file.url}}" ng-show="state=='loaded'" />
+</div>

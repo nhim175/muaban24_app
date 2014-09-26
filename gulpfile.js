@@ -9,7 +9,9 @@ var sh = require('shelljs');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
-  js: ['./www/js/**/*.js']
+  js: [
+    './www/js/**/*.js'
+  ]
 };
 
 gulp.task('default', ['build_js', 'sass']);

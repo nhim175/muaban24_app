@@ -1,3 +1,4 @@
+
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -112,4 +113,6 @@ angular.module('dongnat', ['ionic', 'dongnat.controllers'])
   $urlRouterProvider.otherwise('/app/intro');
 });
 
+angular.module('dongnat.services', []);
 angular.module('dongnat.directives', ['dongnat.services']);
+angular.module('dongnat.controllers', ['dongnat.services', 'dongnat.directives']);

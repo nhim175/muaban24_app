@@ -14,7 +14,7 @@ $assertive:                       #ef4e3a !default;
 $royal:                           #8a6de9 !default;
 $dark:                            #444 !default;
 */
-
+ 
 //$bar-height: 64px !default;
 $status-bar-height: 20px !default;
 
@@ -35,3 +35,4 @@ $font-path: "../fonts" !default;
 @import "./login";
 @import "./me"; 
 @import "./signup";
+@import "./new_product"; 

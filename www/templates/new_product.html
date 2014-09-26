@@ -1,0 +1,88 @@
+<div class="modal new-product">
+  <ion-header-bar>
+    <h1 class="title">New Product</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="hideAddProduct()">
+        <i class="icon ion-ios7-close-empty"></i>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <ion-scroll scrollbar-y="false" direction="x" scrollbar-x="true" style="width: 100%; height: 78px">
+      <div class="row">
+        <div class="col col-25 add-photo-btn">
+          <div advanced-file-upload on-finish="$parent.onUploadSuccess(oldFileId, newFileId)"></div>
+        </div>
+        <div class="col col-25 add-photo-btn">
+          <div advanced-file-upload on-finish="$parent.onUploadSuccess(oldFileId, newFileId)"></div>
+        </div>
+        <div class="col col-25 add-photo-btn">
+          <div advanced-file-upload on-finish="$parent.onUploadSuccess(oldFileId, newFileId)"></div>
+        </div>
+        <div class="col col-25 add-photo-btn">
+          <div advanced-file-upload on-finish="$parent.onUploadSuccess(oldFileId, newFileId)"></div>
+        </div>
+      </div>
+    </ion-scroll>
+    <form ng-submit="$parent.doAddProduct()">
+      <div class="list">
+        <div class="item item-divider">
+          Thông tin sản phẩm
+        </div>
+        <label class="item item-input item-select">
+          <span class="input-label">Danh mục</span>
+          <select ng-model="$parent.product.categoryId">
+            <option ng-repeat="category in categories track by $index" value="{{category.id}}">{{category.name}}</option>
+          </select>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Tiêu đề</span>
+          <input type="text" ng-model="$parent.product.title">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Giới thiệu</span>
+          <textarea ng-model="$parent.product.description"></textarea>
+        </label>
+        <ion-toggle ng-model="$parent.product.isNew" toggle-class="toggle-positive">Mới?</ion-toggle>
+        <div class="item item-divider">
+          Phân loại
+        </div>
+        <ion-toggle ng-model="$parent.product.forSale" toggle-class="toggle-positive" ng-hide="$parent.product.forFree">Bán?</ion-toggle>
+        <ion-toggle ng-model="$parent.product.forExchange" toggle-class="toggle-balanced" ng-hide="$parent.product.forFree">Đổi?</ion-toggle>
+        <ion-toggle ng-model="$parent.product.forFree" toggle-class="toggle-energized" ng-hide="$parent.product.forSale || $parent.product.forExchange">Cho?</ion-toggle>
+        <label class="item item-input" ng-show="$parent.product.forSale">
+          <span class="input-label">Giá</span>
+          <input type="text" pattern="\d*" ng-model="$parent.product.price" class="text-right">
+        </label>
+        <label class="item item-input item-stacked-label" ng-show="$parent.product.forExchange">
+          <span class="input-label">Muốn trao đổi với</span>
+          <textarea ng-model="$parent.product.exchangeInfo"></textarea>
+        </label>
+        <div class="item item-divider">
+          Cách thức giao dịch
+        </div>
+        <label class="item item-radio">
+          <input type="radio" ng-model="$parent.product.transactionMode" value="bank_transfer">
+          <div class="item-content">
+            Chuyển khoản
+          </div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="item item-radio">
+          <input type="radio" ng-model="$parent.product.transactionMode" value="cod">
+          <div class="item-content">
+            Trao tay
+          </div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="item item-input item-stacked-label" ng-show="$parent.product.transactionMode=='cod'">
+          <span class="input-label">Địa điểm thanh toán</span>
+          <textarea ng-model="$parent.product.transactionAddress"></textarea>
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Done</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</div>

@@ -1,4 +1,4 @@
-angular.module('dongnat.controllers', ['dongnat.services', 'dongnat.directives'])
+angular.module('dongnat.controllers')
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, UserService, SettingsService) {
   // Form data for the login modal

@@ -7,10 +7,15 @@ angular.module('dongnat.directives')
     restrict: 'E',
     replace: true,
     scope: {
-      data: '=fileId'
+      data: '=fileId',
+      onStart: '&',
+      onDone: '&'
     },
     link: function(scope, element, attrs) {
       var onSuccess = function(response) {
+        if(typeof scope.onDone === 'function') {
+          scope.onDone(response.file.id);
+        }
         scope.data = response.file.id;
       };
 
@@ -21,6 +26,9 @@ angular.module('dongnat.directives')
         var formData = new FormData();
         formData.append('token', UserService.info().token);
         formData.append('file', event.target.files[0]);
+        if(typeof scope.onStart === 'function') {
+          scope.onStart();
+        }
         $http({
           url: SettingsService.API_URL + '/file/upload',
           method: 'POST',
@@ -31,6 +39,7 @@ angular.module('dongnat.directives')
       });
     },
     controller: function($scope) {
+      
     },
     template: '<input type="file" ng-model="data"/>'
   };

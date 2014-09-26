@@ -1,0 +1,32 @@
+.new-product {
+  .add-photo-btn {
+    height: 78px;
+    text-align: center;
+    background: #F8F8F8;
+    border: 1px dashed #eee;
+    color: #DDD;
+    padding: 0;
+    .icon {
+      font-size: 40px;
+      line-height: 78px;
+      position: relative;
+      top: -5px;
+    }
+    .advanced-file-upload {
+      height: 100%;
+      position: relative;
+      .thumb {
+        height: 100%;
+      }
+      input[type=file] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 5;
+      }
+    }
+  }
+}
