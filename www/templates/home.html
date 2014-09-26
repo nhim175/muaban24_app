@@ -9,7 +9,7 @@
   <ion-content class="has-header">
     <div class="col col-50 product" ng-repeat="product in products track by $index">
       <div class="item item-image">
-        <img src="img/demo.jpg">
+        <img ng-src="{{PRODUCT_THUMB_URL}}/{{product.images[0]}}" />
       </div>
       <div class="info">
         <span class="like">

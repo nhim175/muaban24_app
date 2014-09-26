@@ -5,11 +5,13 @@ angular.module( 'dongnat.services')
   //var API_URL = 'http://localhost:1338';
   var MEDIA_URL = API_URL + '/media';
   var PROFILE_PHOTO_URL = MEDIA_URL + '/thumb/128x128';
+  var PRODUCT_THUMB_URL = MEDIA_URL + '/thumb/256x256';
 
   return {
     API_URL: API_URL,
     MEDIA_URL: MEDIA_URL,
-    PROFILE_PHOTO_URL: PROFILE_PHOTO_URL
+    PROFILE_PHOTO_URL: PROFILE_PHOTO_URL,
+    PRODUCT_THUMB_URL: PRODUCT_THUMB_URL
   };
 })
 ;

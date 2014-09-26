@@ -1,6 +1,6 @@
 angular.module('dongnat.services')
 
-.factory('ProductService', function($http, SettingsService) {
+.factory('ProductService', function($http, SettingsService, UserService) {
   
   var _list;
 
@@ -15,6 +15,7 @@ angular.module('dongnat.services')
   };
 
   var create = function(params) {
+    params.data.token = UserService.info().token;
     $http.post(SettingsService.API_URL + '/product/create', params.data)
       .success(params.onSuccess)
       .error(params.onError);
