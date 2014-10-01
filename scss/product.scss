@@ -1,0 +1,69 @@
+.product-ctrl {
+  .product-image {
+    height: 428px;
+    line-height: 400px;
+    background: #DDD;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      vertical-align: middle;
+    }
+  }
+  .price {
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.6;
+  }
+  .transaction-mode {
+    text-align: center;
+    background: #D42E2E;
+    color: #FFF;
+    line-height: 1.6;
+  }
+  .product-title {
+    font-size: 1.2em;
+  }
+  .actions {
+    padding-top: 10px;
+    margin-top: 0px;
+    span {
+      line-height: 30px;
+      padding: 5px;
+      font-weight: bold;
+    }
+  }
+  .description {
+    margin-top: 0;
+  }
+  .card {
+    box-shadow: none;
+  }
+  .extra-info {
+    .item {
+      padding: 0;
+    }
+    .item > .col:first-child {
+      font-weight: bold;
+    }
+    .col {
+      font-size: 14px;
+    }
+    .col-33 {
+      background: #F3F3F3;
+      padding: 7px;
+    }
+  }
+  textarea.comment {
+    padding: 10px;
+    min-height: 70px;
+    border: 1px solid #CCC;
+    resize: none;
+    border-radius: 3px;
+  }
+  .comment-list {
+    .item p {
+      white-space: normal;
+    }
+  }
+}

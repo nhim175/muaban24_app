@@ -1,8 +1,17 @@
 angular.module('dongnat.controllers')
 
-.controller('HomeCtrl', function($scope, $rootScope, $ionicNavBarDelegate, $ionicModal, $ionicPopup, $ionicLoading, CategoryService, ProductService, SettingsService) {
+.controller('HomeCtrl', function($scope, $rootScope, $timeout, $ionicNavBarDelegate, $ionicModal, $ionicPopup, $ionicLoading, $ionicScrollDelegate, CategoryService, ProductService, SettingsService) {
 
-  $scope.PRODUCT_THUMB_URL = SettingsService.PRODUCT_THUMB_URL;
+  $scope.PRODUCT_THUMB_SIZE = SettingsService.PRODUCT_THUMB_SIZE;
+  $scope.MEDIA_URL = SettingsService.MEDIA_URL;
+
+  var scrollDelegate = $ionicScrollDelegate.$getByHandle('homeScroll');
+  $scope.$on('$viewContentLoaded', function() {
+    $timeout(function() {
+      scrollDelegate.rememberScrollPosition('home-scroll-position');
+      scrollDelegate.scrollToRememberedPosition(false);
+    });
+  });
 
   $ionicModal.fromTemplateUrl('templates/new_product.html', {
     scope: $scope,
@@ -11,6 +20,13 @@ angular.module('dongnat.controllers')
     $scope.addProductModal = modal;
   });
 
+  $ionicModal.fromTemplateUrl('templates/category_list_modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.categoriesModal = modal;
+  });
+ 
   $scope.onUploadSuccess = function(oldFileId, newFileId) {
     if (!oldFileId && !newFileId) return;
     if (!oldFileId && newFileId) {
@@ -51,15 +67,19 @@ angular.module('dongnat.controllers')
     }
   });
 
-  ProductService.fetch({
-    onSuccess: function(data) {
-      $scope.products = data;
-      ProductService.refresh(data);
-    },
-    onError: function(error) {
-      console.log(error);
-    }
-  });
+  if(ProductService.all()) {
+    $scope.products = ProductService.all();
+  } else {
+    ProductService.fetch({
+      onSuccess: function(data) {
+        $scope.products = data;
+        ProductService.refresh(data);
+      },
+      onError: function(error) {
+        console.log(error);
+      }
+    });
+  }
  
   $scope.showAddProduct = function() {
     $scope.addProductModal.show();
@@ -67,6 +87,14 @@ angular.module('dongnat.controllers')
  
   $scope.hideAddProduct = function() {
     $scope.addProductModal.hide();
+  };
+
+  $scope.showCategories = function() {
+    $scope.categoriesModal.show();
+  };
+
+  $scope.hideCategories = function() {
+    $scope.categoriesModal.hide();
   };
 
   $scope.doAddProduct = function() {
@@ -119,4 +147,18 @@ angular.module('dongnat.controllers')
   });
 
   $scope.product = ProductService.empty();
+
+  $scope.doRefresh = function() {
+    ProductService.fetch({
+      onSuccess: function(data) {
+        $scope.products = data;
+        ProductService.refresh(data);
+        $scope.$broadcast('scroll.refreshComplete');
+      },
+      onError: function(error) {
+        console.log(error);
+        $scope.$broadcast('scroll.refreshComplete');
+      }
+    });
+  }
 });

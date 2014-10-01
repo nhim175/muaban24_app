@@ -1,0 +1,92 @@
+<ion-view title="{{product.title}}" class="product-ctrl">
+  <ion-nav-buttons side="left">
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <ion-slide-box pager-click="changePage(index)" class="intro">
+      <ion-slide ng-repeat="imageId in product.images track by $index">
+        <div class="product-image">
+          <img ng-src="{{MEDIA_URL}}/{{product.userId}}/{{imageId}}">
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+    <div class="row bg-white border-bottom">
+      <div class="col col-33">
+        <div class="price">${{product.price || 0}}</div>
+        <div class="transaction-mode">{{product.transactionMode}}</div>
+      </div>
+      <div class="col col-67">
+        <div class="product-title">{{product.title}}</div>
+      </div>
+    </div>
+    <div class="row bg-white actions">
+      <div class="col col-67">
+        <a class="button button-outline icon-left ion-ios7-heart button-positive button-small">
+          Like
+        </a>
+        <span class="likes">0</span>
+        <a class="button button-outline icon-left ion-ios7-chatbubble button-positive button-small"> 
+          Comment
+        </a>
+        <span class="comments">0</span>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-avatar">
+        <img ng-src="{{ !!owner && MEDIA_URL + '/' + owner.id  + '/' + PROFILE_PHOTO_SIZE + '/' + owner.profile_image || '' }}">
+        <h2><a href="#/app/user/{{owner.id}}" class="unstyled">{{owner.name}}</a></h2>
+        <p>Owner info here</p>
+      </div>
+      <div class="item item-body">
+        <p class="description">
+          {{product.description}}
+        </p>
+        <p class="ago text-small"><i class="icon ion-ios7-clock-outline"></i> {{product.createdAt | moment: 'fromNow'}}</p>
+      </div>
+    </div>
+    <div class="list list-inset extra-info">
+      <div class="item row">
+        <div class="col col-33">Category</div>
+        <div class="col col-66"><a href="#/app/category/{{category.id}}">{{category.name}}</a></div>
+      </div>
+      <div class="item row">
+        <div class="col col-33">For</div>
+        <div class="col col-66">
+          <p ng-if="product.forFree">Free</p>
+          <p ng-if="product.forSale">Sale</p>
+          <p ng-if="product.forExchange">Exchange</p>
+        </div>
+      </div>
+      <div class="item row" ng-if="product.exchangeInfo">
+        <div class="col col-33">Exchange info</div>
+        <div class="col col-66">
+          {{product.exchangeInfo}}
+        </div>
+      </div>
+      <div class="item row" ng-if="product.transactionAddress">
+        <div class="col col-33">Address</div>
+        <div class="col col-66">
+          {{product.transactionAddress}}
+        </div>
+      </div>
+    </div>
+    <div class="list comment-list">
+
+        <div class="item item-avatar" ng-repeat="comment in comments track by $index">
+          <img ng-src="{{!!comment.user && MEDIA_URL + '/' + comment.user.id + '/' + PROFILE_PHOTO_SIZE + '/' + comment.user.profile_image || ''}}">
+          <h2>{{comment.user.name}}</h2>
+          <p>{{comment.content}}</p>
+        </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col col-80">
+        <textarea placeholder="Write a comment" class="comment" ng-model="$parent.comment.content"></textarea>
+      </div>
+      <div class="col col-20 text-right">
+        <button class="button button-positive icon ion-paper-airplane" ng-click="doComment()"></button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+

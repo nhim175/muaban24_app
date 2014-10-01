@@ -1,0 +1,22 @@
+.category-ctrl {
+  .product {
+    float: left;
+    .info {
+      background: #fff;
+      span {
+        line-height: 24px;
+        padding-left: 5px;
+        color: #888;
+        font-size: 12px;
+        .icon {
+          font-size: 15px;
+        }
+      }
+      .price {
+        float: right;
+        padding-right: 5px;
+        font-weight: bold;
+      }
+    }
+  }
+}

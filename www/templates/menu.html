@@ -10,7 +10,7 @@
   <ion-side-menu side="left">
     <header class="bar bar-header bar-stable">
       <span class="avatar">
-        <img ng-src="{{PROFILE_PHOTO_URL}}/{{user.profile_image}}" ng-show="user.profile_image">
+        <img ng-src="{{MEDIA_URL}}/{{user.id}}/{{PROFILE_PHOTO_SIZE}}/{{user.profile_image}}" ng-show="user.profile_image">
         <img src="img/avatar.svg" ng-hide="user.profile_image">
       </span>
       <a class="login-btn" ng-hide="user" nav-clear menu-close href="#/app/login">Sign up or sign in</a>

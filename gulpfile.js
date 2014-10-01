@@ -10,6 +10,8 @@ var sh = require('shelljs');
 var paths = {
   sass: ['./scss/**/*.scss'],
   js: [
+    './www/lib/underscore/underscore-min.js',
+    './www/lib/moment/min/moment.min.js',
     './www/js/**/*.js'
   ]
 };

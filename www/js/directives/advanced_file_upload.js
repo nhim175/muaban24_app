@@ -41,8 +41,8 @@ angular.module('dongnat.directives')
         $scope.file.url = SettingsService.API_URL + '/media/thumb/128x128/' + $scope.file.id
         var _ref;
         $scope.onFinish({
-          oldFileId: (_ref = $scope.oldFile) != null ? _ref.id : void 0,
-          newFileId: $scope.file.id
+          oldFileId: (_ref = $scope.oldFile) != null ? _ref.filename : void 0,
+          newFileId: $scope.file.filename
         });
         $scope.oldFile = $scope.file;
       }

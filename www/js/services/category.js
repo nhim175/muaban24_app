@@ -14,8 +14,15 @@ angular.module('dongnat.services')
     _list = list;
   };
 
+  var find = function(id) {
+    return _.find(_list, function(category) {
+      return category.id === id;
+    });
+  };
+
   return {
     fetch: fetch,
+    find: find,
     refresh: refresh
   }
 });

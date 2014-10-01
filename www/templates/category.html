@@ -1,0 +1,33 @@
+<ion-view class="category-ctrl" title="{{category.name}}">
+  <ion-nav-buttons side="left">
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-ios7-infinite"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header" overflow-scroll="true">
+    <ion-scroll delegate-handle="homeScroll" style="height: 506px">
+      <ion-refresher
+        pulling-text="Pull to refresh..."
+        on-refresh="doRefresh()">
+      </ion-refresher>
+      <div class="col col-50 product" ng-repeat="product in products track by $index">
+        <div class="item item-image">
+          <a href="#/app/product/{{product.id}}">
+            <img ng-src="{{ MEDIA_URL + '/' + product.userId + '/' + PRODUCT_THUMB_SIZE + '/' + product.images[0] }}" />
+          </a>
+        </div>
+        <div class="info">
+          <span class="like">
+            <i class="icon ion-ios7-heart-outline"></i> 0
+          </span>
+          <span class="comment">
+            <i class="icon ion-ios7-chatbubble-outline"></i> 1k
+          </span>
+          <span class="price">
+          ${{product.price || 0}}
+          </span>
+        </div>
+      </div>
+    </ion-scroll>
+  </ion-content>
+</ion-view>

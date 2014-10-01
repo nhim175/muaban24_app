@@ -2,21 +2,20 @@
 
 angular.module('dongnat.directives')
 
-.directive('fileUpload', function($http, SettingsService, UserService) {
+.directive('fileUpload', function($http, $timeout, SettingsService, UserService) {
   return {
     restrict: 'E',
     replace: true,
     scope: {
-      data: '=fileId',
-      onStart: '&',
-      onDone: '&'
+      data: '=fileId'
     },
     link: function(scope, element, attrs) {
       var onSuccess = function(response) {
-        if(typeof scope.onDone === 'function') {
-          scope.onDone(response.file.id);
-        }
-        scope.data = response.file.id;
+        //TODO: server create thumbnails asynchronously, so we need to wait
+        //otherwise image not found
+        $timeout(function() {
+          scope.data = response.file.filename;
+        }, 1000);
       };
 
       var onError = function(error) {
@@ -26,9 +25,6 @@ angular.module('dongnat.directives')
         var formData = new FormData();
         formData.append('token', UserService.info().token);
         formData.append('file', event.target.files[0]);
-        if(typeof scope.onStart === 'function') {
-          scope.onStart();
-        }
         $http({
           url: SettingsService.API_URL + '/file/upload',
           method: 'POST',
@@ -39,7 +35,7 @@ angular.module('dongnat.directives')
       });
     },
     controller: function($scope) {
-      
+
     },
     template: '<input type="file" ng-model="data"/>'
   };

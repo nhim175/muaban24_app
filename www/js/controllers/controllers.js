@@ -2,7 +2,8 @@ angular.module('dongnat.controllers')
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, UserService, SettingsService) {
   // Form data for the login modal
-  $scope.PROFILE_PHOTO_URL = SettingsService.PROFILE_PHOTO_URL;
+  $scope.MEDIA_URL = SettingsService.MEDIA_URL;
+  $scope.PROFILE_PHOTO_SIZE = SettingsService.PROFILE_PHOTO_SIZE;
   
   $scope.user = UserService.info();
   var handle_user_logged_in_event = function() {

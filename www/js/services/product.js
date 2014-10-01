@@ -10,11 +10,28 @@ angular.module('dongnat.services')
       .error(params.onError);
   };
 
+  var all = function() {
+    return _list;
+  };
+
+  var find = function(id) {
+    return _.find(_list, function(product) {
+      return product.id === id;
+    });
+  };
+
+  var getByCategory = function(params) {
+    $http.get(SettingsService.API_URL + '/category/' + params.categoryId + '/products', {params: {token: UserService.info().token}})
+      .success(params.onSuccess)
+      .error(params.onError);
+  };
+
   var refresh = function(list) {
     _list = list;
   };
 
   var create = function(params) {
+    // TODO: this should go to controller
     params.data.token = UserService.info().token;
     $http.post(SettingsService.API_URL + '/product/create', params.data)
       .success(params.onSuccess)
@@ -40,8 +57,11 @@ angular.module('dongnat.services')
 
   return {
     fetch: fetch,
+    find: find,
     refresh: refresh,
     create: create,
-    empty: empty
+    empty: empty,
+    all: all,
+    getByCategory: getByCategory
   }
 });

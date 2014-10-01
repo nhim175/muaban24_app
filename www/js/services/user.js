@@ -8,6 +8,12 @@ angular.module('dongnat.services')
       .error(params.onError);
   };
 
+  var find = function(params) {
+    $http.get(SettingsService.API_URL + '/user/' + params.data.id)
+      .success(params.onSuccess)
+      .error(params.onError);
+  };
+
   var logout = function() {
     localStorage.user = 'null';
   };
@@ -35,6 +41,7 @@ angular.module('dongnat.services')
   return {
     login: login,
     logout: logout,
+    find: find,
     info: info,
     signup: signup,
     update: update

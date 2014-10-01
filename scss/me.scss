@@ -11,4 +11,22 @@
   .list {
     background: #fff;
   }
+  input[type=file] {
+    margin-left: 0px;
+    text-indent: 999px;
+    position: relative;
+    color: transparent;
+    &:before {
+      content: 'Change profile photo';
+      position: absolute;
+      display: inline-block;
+      color: #6D6D6D;
+      top: 0;
+      left: -5px;
+      text-indent: 0px;
+      background: #FFF;
+      padding: 0px 10px;
+      border-radius: 18px;
+    }
+  }
 }

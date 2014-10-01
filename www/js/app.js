@@ -108,6 +108,26 @@ angular.module('dongnat', ['ionic', 'dongnat.controllers'])
         }
       }
     })
+
+    .state('app.product', {
+      url: "/product/:id",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/product.html",
+          controller: 'ProductCtrl'
+        }
+      }
+    })
+
+    .state('app.category', {
+      url: "/category/:id",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/category.html",
+          controller: 'CategoryCtrl'
+        }
+      }
+    })
     ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/intro');
@@ -115,4 +135,5 @@ angular.module('dongnat', ['ionic', 'dongnat.controllers'])
 
 angular.module('dongnat.services', []);
 angular.module('dongnat.directives', ['dongnat.services']);
-angular.module('dongnat.controllers', ['dongnat.services', 'dongnat.directives']);
+angular.module('dongnat.controllers', ['dongnat.services', 'dongnat.directives', 'dongnat.filters']);
+angular.module('dongnat.filters', ['dongnat.services']);

@@ -10,9 +10,9 @@
         <div class="row">
           <div class="col col-50 col-offset-25">
             <label>
-              <img class="profile-img" ng-src="{{PROFILE_PHOTO_URL}}/{{user.profile_image}}" ng-show="user.profile_image" />
+              <img class="profile-img" ng-src="{{MEDIA_URL}}/{{user.id}}/{{PROFILE_PHOTO_SIZE}}/{{user.profile_image}}" ng-show="user.profile_image" />
               <img class="profile-default" src="img/avatar.svg" ng-hide="user.profile_image"/>
-              <file-upload class="form-control" file-id="user.profile_image" ng-hide="true"></file-upload>
+              <file-upload class="form-control" file-id="user.profile_image"></file-upload>
             </label>
           </div>
         </div>

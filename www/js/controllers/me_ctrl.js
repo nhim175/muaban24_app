@@ -1,19 +1,15 @@
 angular.module('dongnat.controllers')
 
-.controller('MeCtrl', function($scope, $state, $rootScope, $ionicLoading, $ionicPopup, UserService, SettingsService) {
+.controller('MeCtrl', function($scope, $state, $rootScope, $ionicLoading, $ionicPopup, $timeout, UserService, SettingsService) {
   $scope.user = UserService.info();
 
   $scope.MEDIA_URL = SettingsService.MEDIA_URL;
-  $scope.PROFILE_PHOTO_URL = SettingsService.PROFILE_PHOTO_URL;
+  $scope.PROFILE_PHOTO_SIZE = SettingsService.PROFILE_PHOTO_SIZE;
 
   $scope.logout = function() {
     UserService.logout();
     $rootScope.$broadcast("user::logged_out");
     $state.go('app.home');
-  };
-
-  $scope.uploadProfilePhoto = function(event) {
-    console.log(event);
   };
 
   $scope.updateInfo = function() {
