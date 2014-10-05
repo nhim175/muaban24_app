@@ -62,8 +62,13 @@
     border-radius: 3px;
   }
   .comment-list {
+    margin-bottom: 0px;
     .item p {
       white-space: normal;
     }
+  }
+  .button.liked {
+    background: $positive;
+    color: white;
   }
 }

@@ -1,7 +1,7 @@
 <ion-view title="{{product.title}}" class="product-ctrl">
   <ion-nav-buttons side="left">
   </ion-nav-buttons>
-  <ion-content class="has-header">
+  <ion-content class="has-header" delegate-handle="productScroll">
     <ion-slide-box pager-click="changePage(index)" class="intro">
       <ion-slide ng-repeat="imageId in product.images track by $index">
         <div class="product-image">
@@ -20,14 +20,17 @@
     </div>
     <div class="row bg-white actions">
       <div class="col col-67">
-        <a class="button button-outline icon-left ion-ios7-heart button-positive button-small">
+        <a class="button button-outline icon-left ion-ios7-heart button-positive button-small" ng-click="doLike()" ng-class="{'liked': $parent.isLiked}">
           Like
         </a>
-        <span class="likes">0</span>
-        <a class="button button-outline icon-left ion-ios7-chatbubble button-positive button-small"> 
+        <a class="button button-outline icon-left ion-ios7-chatbubble button-positive button-small" ng-click="goToCommentBox()"> 
           Comment
         </a>
-        <span class="comments">0</span>
+      </div>
+    </div>
+    <div class="row bg-white">
+      <div class="col likes">
+      {{likes.length}} people like this.
       </div>
     </div>
     <div class="list card">
@@ -69,7 +72,7 @@
         </div>
       </div>
     </div>
-    <div class="list comment-list">
+    <div class="list comment-list" ng-hide="comments.length == 0">
 
         <div class="item item-avatar" ng-repeat="comment in comments track by $index">
           <img ng-src="{{!!comment.user && MEDIA_URL + '/' + comment.user.id + '/' + PROFILE_PHOTO_SIZE + '/' + comment.user.profile_image || ''}}">
@@ -79,7 +82,7 @@
 
     </div>
 
-    <div class="row">
+    <div class="row" ng-hide="user == null">
       <div class="col col-80">
         <textarea placeholder="Write a comment" class="comment" ng-model="$parent.comment.content"></textarea>
       </div>
@@ -87,6 +90,7 @@
         <button class="button button-positive icon ion-paper-airplane" ng-click="doComment()"></button>
       </div>
     </div>
+    <p class="padding" ng-show="user == null"><a href="#/app/login">Login</a> to comment on this product.</p>
   </ion-content>
 </ion-view>
 

@@ -1,10 +1,11 @@
 angular.module( 'dongnat.services')
 
 .factory('SettingsService', function() {
-  var HOST = 'http://192.168.3.5';
-  //var HOST = 'http://localhost';
-  var API_URL = HOST + ':1338';
+  var HOST = 'http://localhost';
+  //var HOST = 'http://www.thitruong24gio.net';
+  var API_URL = HOST + ':1337';
   var MEDIA_URL = HOST + ':1708';
+  //var MEDIA_URL = 'http://media.thitruong24gio.net';
   var PROFILE_PHOTO_SIZE = '128x128';
   var PRODUCT_THUMB_SIZE = '256x256';
 

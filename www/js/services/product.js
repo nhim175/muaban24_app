@@ -21,7 +21,7 @@ angular.module('dongnat.services')
   };
 
   var getByCategory = function(params) {
-    $http.get(SettingsService.API_URL + '/category/' + params.categoryId + '/products', {params: {token: UserService.info().token}})
+    $http.get(SettingsService.API_URL + '/category/' + params.categoryId + '/products')
       .success(params.onSuccess)
       .error(params.onError);
   };
@@ -36,7 +36,27 @@ angular.module('dongnat.services')
     $http.post(SettingsService.API_URL + '/product/create', params.data)
       .success(params.onSuccess)
       .error(params.onError);
-  }
+  };
+
+  var like = function(params) {
+    params.data.token = UserService.info().token;
+    $http.post(SettingsService.API_URL + '/product/' + params.data.productId + '/like', params.data)
+      .success(params.onSuccess)
+      .error(params.onError);
+  };
+
+  var unlike = function(params) {
+    params.data.token = UserService.info().token;
+    $http.post(SettingsService.API_URL + '/product/' + params.data.productId + '/unlike', params.data)
+      .success(params.onSuccess)
+      .error(params.onError);
+  };
+
+  var getLikes = function(params) {
+    $http.get(SettingsService.API_URL + '/product/' + params.data.productId + '/likes')
+      .success(params.onSuccess)
+      .error(params.onError);
+  };
 
   var empty = function() {
     return {
@@ -62,6 +82,9 @@ angular.module('dongnat.services')
     create: create,
     empty: empty,
     all: all,
-    getByCategory: getByCategory
+    getByCategory: getByCategory,
+    like: like,
+    unlike: unlike,
+    getLikes: getLikes
   }
 });

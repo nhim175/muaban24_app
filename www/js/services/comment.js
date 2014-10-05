@@ -11,7 +11,7 @@ angular.module('dongnat.services')
   };
 
   var getByProduct = function(params) {
-    $http.get(SettingsService.API_URL + '/product/' +params.productId+ '/comments', {params: {token: UserService.info().token}})
+    $http.get(SettingsService.API_URL + '/product/' +params.productId+ '/comments')
       .success(params.onSuccess)
       .error(params.onError);
   };
