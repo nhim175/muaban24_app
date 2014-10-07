@@ -1,9 +1,20 @@
 $new-btn-color: rgb(226, 114, 114);
 
 .nav-bar {
-  .title img {
-    height: 80%;
-    vertical-align: middle;
+  .title {
+    overflow: visible;
+    img {
+      height: 80%;
+      vertical-align: middle;
+      position: relative;
+      left: -30px;
+    }
+  }
+  
+  .button-search {
+    &:before {
+      font-size: 24px !important;
+    }
   }
 }
 

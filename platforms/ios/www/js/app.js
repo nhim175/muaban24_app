@@ -32,15 +32,6 @@ angular.module('dongnat', ['ionic', 'dongnat.controllers'])
       controller: 'AppCtrl'
     })
 
-    .state('app.search', {
-      url: "/search",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/search.html"
-        }
-      }
-    })
-
     .state('app.browse', {
       url: "/browse",
       views: {
@@ -125,6 +116,26 @@ angular.module('dongnat', ['ionic', 'dongnat.controllers'])
         'menuContent': {
           templateUrl: "templates/category.html",
           controller: 'CategoryCtrl'
+        }
+      }
+    })
+
+    .state('app.user', {
+      url: "/user/:id",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/user.html",
+          controller: 'UserCtrl'
+        }
+      }
+    })
+
+    .state('app.search', {
+      url: "/search",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/search.html",
+          controller: 'SearchCtrl'
         }
       }
     })

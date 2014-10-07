@@ -26,6 +26,12 @@ angular.module('dongnat.services')
       .error(params.onError);
   };
 
+  var getByUser = function(params) {
+    $http.get(SettingsService.API_URL + '/user/' + params.userId + '/products')
+      .success(params.onSuccess)
+      .error(params.onError);
+  };
+
   var refresh = function(list) {
     _list = list;
   };
@@ -58,6 +64,12 @@ angular.module('dongnat.services')
       .error(params.onError);
   };
 
+  var search = function(params) {
+    $http.get(SettingsService.API_URL + '/product/search/' + params.data.query)
+      .success(params.onSuccess)
+      .error(params.onError);
+  };
+
   var empty = function() {
     return {
       title: null,
@@ -83,8 +95,10 @@ angular.module('dongnat.services')
     empty: empty,
     all: all,
     getByCategory: getByCategory,
+    getByUser: getByUser,
     like: like,
     unlike: unlike,
-    getLikes: getLikes
+    getLikes: getLikes,
+    search: search
   }
 });

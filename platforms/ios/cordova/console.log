@@ -6,3 +6,69 @@
 2014-08-23 14:51:17.180 HelloCordova[46587:70b] [CDVTimer][TotalPluginStartup] 1.836002ms
 2014-08-23 14:51:17.414 HelloCordova[46587:70b] Resetting plugins due to page load.
 2014-08-23 14:51:17.750 HelloCordova[46587:70b] Finished load of: file:///Users/thinhpham/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/F6FCDDF4-A7DF-4122-A6F8-31503ECF691A/HelloCordova.app/www/index.html#/app/playlists
+2014-10-07 00:37:06.552 DongNat[21719:713364] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Data/Application/4F30A2DE-9F2C-4EE8-9B17-416CFFB0B8FC/Library/Cookies/Cookies.binarycookies
+2014-10-07 00:37:06.696 DongNat[21719:713364] Multi-tasking -> Device: YES, App: YES
+2014-10-07 00:37:06.725 DongNat[21719:713364] Unlimited access to network resources
+2014-10-07 00:37:07.154 DongNat[21719:713364] [CDVTimer][keyboard] 0.322998ms
+2014-10-07 00:37:07.154 DongNat[21719:713364] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-10-07 00:37:07.154 DongNat[21719:713364] [CDVTimer][statusbar] 0.335991ms
+2014-10-07 00:37:07.155 DongNat[21719:713364] [CDVTimer][TotalPluginStartup] 1.492977ms
+2014-10-07 00:37:08.017 DongNat[21719:713364] Resetting plugins due to page load.
+2014-10-07 00:37:09.792 DongNat[21719:713364] Finished load of: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Bundle/Application/609F5C5F-1FA2-4B95-80D9-7826EE2997F7/DongNat.app/www/index.html#/app/intro
+2014-10-07 00:38:58.761 DongNat[22136:715488] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Data/Application/B5B034D6-F894-4711-AF26-337A6A905B93/Library/Cookies/Cookies.binarycookies
+2014-10-07 00:38:58.880 DongNat[22136:715488] Multi-tasking -> Device: YES, App: YES
+2014-10-07 00:38:58.888 DongNat[22136:715488] Unlimited access to network resources
+2014-10-07 00:38:59.001 DongNat[22136:715488] [CDVTimer][keyboard] 0.063002ms
+2014-10-07 00:38:59.001 DongNat[22136:715488] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-10-07 00:38:59.001 DongNat[22136:715488] [CDVTimer][statusbar] 0.162959ms
+2014-10-07 00:38:59.001 DongNat[22136:715488] [CDVTimer][TotalPluginStartup] 0.579000ms
+2014-10-07 00:38:59.164 DongNat[22136:715488] Resetting plugins due to page load.
+2014-10-07 00:38:59.713 DongNat[22136:715488] Finished load of: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Bundle/Application/9CCB2FC1-EA81-4416-8C33-FB14C6032D5D/DongNat.app/www/index.html#/app/home
+2014-10-07 00:45:53.780 DongNat[22981:720766] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Data/Application/F8A8B348-E6B1-4277-AB52-8D818D0B8092/Library/Cookies/Cookies.binarycookies
+2014-10-07 00:45:53.884 DongNat[22981:720766] Multi-tasking -> Device: YES, App: YES
+2014-10-07 00:45:53.892 DongNat[22981:720766] Unlimited access to network resources
+2014-10-07 00:45:54.041 DongNat[22981:720766] [CDVTimer][keyboard] 0.105977ms
+2014-10-07 00:45:54.041 DongNat[22981:720766] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-10-07 00:45:54.041 DongNat[22981:720766] [CDVTimer][statusbar] 0.199974ms
+2014-10-07 00:45:54.041 DongNat[22981:720766] [CDVTimer][TotalPluginStartup] 0.757992ms
+2014-10-07 00:45:54.250 DongNat[22981:720766] Resetting plugins due to page load.
+2014-10-07 00:45:54.894 DongNat[22981:720766] Finished load of: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Bundle/Application/1ED05274-0C8D-4B37-911F-DC3F7CFCA22E/DongNat.app/www/index.html#/app/home
+2014-10-07 08:39:39.277 DongNat[22981:750930] Communications error: <OS_xpc_error: <error: 0x319e5f4> { count = 1, contents =
+	"XPCErrorDescription" => <string: 0x319e83c> { length = 22, contents = "Connection interrupted" }
+}>
+2014-10-07 21:52:16.847 DongNat[33219:1100113] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Data/Application/A42E0140-4B97-4C8D-A99C-5D1A3B6D1F2A/Library/Cookies/Cookies.binarycookies
+2014-10-07 21:52:16.975 DongNat[33219:1100113] Multi-tasking -> Device: YES, App: YES
+2014-10-07 21:52:17.000 DongNat[33219:1100113] Unlimited access to network resources
+2014-10-07 21:52:17.175 DongNat[33219:1100113] [CDVTimer][keyboard] 0.072002ms
+2014-10-07 21:52:17.175 DongNat[33219:1100113] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-10-07 21:52:17.175 DongNat[33219:1100113] [CDVTimer][statusbar] 0.123978ms
+2014-10-07 21:52:17.176 DongNat[33219:1100113] [CDVTimer][TotalPluginStartup] 0.522971ms
+2014-10-07 21:52:17.404 DongNat[33219:1100113] Resetting plugins due to page load.
+2014-10-07 21:52:17.964 DongNat[33219:1100113] Finished load of: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Bundle/Application/2B7A7B2A-86BC-41FE-BFA6-55E76CEC9C5F/DongNat.app/www/index.html#/app/home
+2014-10-07 21:58:38.001 DongNat[33694:1104695] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Data/Application/5C30A6BE-0BEB-4915-A0C9-04B8FCCDC30D/Library/Cookies/Cookies.binarycookies
+2014-10-07 21:58:38.078 DongNat[33694:1104695] Multi-tasking -> Device: YES, App: YES
+2014-10-07 21:58:38.083 DongNat[33694:1104695] Unlimited access to network resources
+2014-10-07 21:58:38.193 DongNat[33694:1104695] [CDVTimer][keyboard] 0.059009ms
+2014-10-07 21:58:38.194 DongNat[33694:1104695] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-10-07 21:58:38.194 DongNat[33694:1104695] [CDVTimer][statusbar] 0.165045ms
+2014-10-07 21:58:38.194 DongNat[33694:1104695] [CDVTimer][TotalPluginStartup] 0.630021ms
+2014-10-07 21:58:38.330 DongNat[33694:1104695] Resetting plugins due to page load.
+2014-10-07 21:58:38.803 DongNat[33694:1104695] Finished load of: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Bundle/Application/83EA114F-BD71-4F49-96BD-85091D905F66/DongNat.app/www/index.html#/app/home
+2014-10-07 22:24:44.639 DongNat[34339:1118280] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Data/Application/612B5FAB-B909-4E58-A05E-1827D2A779AB/Library/Cookies/Cookies.binarycookies
+2014-10-07 22:24:44.707 DongNat[34339:1118280] Multi-tasking -> Device: YES, App: YES
+2014-10-07 22:24:44.715 DongNat[34339:1118280] Unlimited access to network resources
+2014-10-07 22:24:44.848 DongNat[34339:1118280] [CDVTimer][keyboard] 0.079036ms
+2014-10-07 22:24:44.848 DongNat[34339:1118280] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-10-07 22:24:44.848 DongNat[34339:1118280] [CDVTimer][statusbar] 0.222027ms
+2014-10-07 22:24:44.849 DongNat[34339:1118280] [CDVTimer][TotalPluginStartup] 0.664949ms
+2014-10-07 22:24:44.987 DongNat[34339:1118280] Resetting plugins due to page load.
+2014-10-07 22:24:45.437 DongNat[34339:1118280] Finished load of: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Bundle/Application/D7EC2C05-5543-4D5C-B3C3-7605439FE347/DongNat.app/www/index.html#/app/home
+2014-10-07 22:33:01.404 DongNat[34799:1123409] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Data/Application/3643EEAE-7630-4E6B-96D0-18463F96FC8F/Library/Cookies/Cookies.binarycookies
+2014-10-07 22:33:01.484 DongNat[34799:1123409] Multi-tasking -> Device: YES, App: YES
+2014-10-07 22:33:01.492 DongNat[34799:1123409] Unlimited access to network resources
+2014-10-07 22:33:01.674 DongNat[34799:1123409] [CDVTimer][keyboard] 0.108004ms
+2014-10-07 22:33:01.674 DongNat[34799:1123409] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-10-07 22:33:01.674 DongNat[34799:1123409] [CDVTimer][statusbar] 0.178993ms
+2014-10-07 22:33:01.674 DongNat[34799:1123409] [CDVTimer][TotalPluginStartup] 0.759006ms
+2014-10-07 22:33:01.843 DongNat[34799:1123409] Resetting plugins due to page load.
+2014-10-07 22:33:02.338 DongNat[34799:1123409] Finished load of: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Bundle/Application/DA0B69EC-A291-4E40-926C-2F8FF17C1F84/DongNat.app/www/index.html#/app/home

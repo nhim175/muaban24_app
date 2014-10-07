@@ -1,7 +1,7 @@
 angular.module( 'dongnat.services')
 
 .factory('SettingsService', function() {
-  var HOST = 'http://localhost';
+  var HOST = 'http://192.168.3.5';
   //var HOST = 'http://www.thitruong24gio.net';
   var API_URL = HOST + ':1337';
   var MEDIA_URL = HOST + ':1708';

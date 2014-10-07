@@ -1,14 +1,13 @@
-<ion-view class="search-ctrl" title="Search">
+<ion-view class="user-ctrl" title="{{user.name}}">
   <ion-content class="has-header" overflow-scroll="true">
-    <ion-scroll delegate-handle="searchScroll" style="height: 506px">
-      <div class="list search-box">
-        <div class="item item-input-inset">
-          <label class="item-input-wrapper">
-            <input type="text" placeholder="Search..." ng-model="query">
-          </label>
-          <button class="button button-small" on-tap="doSearch(query)">
-            Submit
-          </button>
+    <ion-scroll delegate-handle="userScroll" style="height: 506px">
+      <div class="cover bg-white">
+        <div class="row">
+          <div class="col col-50 col-offset-25">
+            <img class="profile-img" ng-src="{{MEDIA_URL}}/{{user.id}}/{{PROFILE_PHOTO_SIZE}}/{{user.profile_image}}" ng-show="user.profile_image" />
+            <img class="profile-default" src="img/avatar.svg" ng-hide="user.profile_image"/>
+            <p class="text-center">{{user.name}}</p>
+          </div>
         </div>
       </div>
       <div class="col col-50 product" ng-repeat="product in products track by $index">
