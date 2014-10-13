@@ -5,6 +5,8 @@ angular.module('dongnat.controllers')
   $scope.PROFILE_PHOTO_SIZE = SettingsService.PROFILE_PHOTO_SIZE;
   $scope.PRODUCT_THUMB_SIZE = SettingsService.PRODUCT_THUMB_SIZE;
 
+  $scope.me = UserService.info();
+
   function onFindUserSuccess(user) {
     $scope.user = user;
     ProductService.getByUser({

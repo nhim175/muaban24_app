@@ -1,0 +1,12 @@
+<ion-view class="message-ctrl" title="{{user.name}}">
+  <ion-content class="has-header padding bg-white">
+    <ol class="messages">
+      <li ng-repeat="message in messages" ng-class="{ 'my-message': me.id == message.from.id }">
+        <p ng-bind-html="message.content"></p>
+      </li>
+    </ol>
+  </ion-content>
+</ion-view>
+<ion-footer-bar class="bar-frosted">
+  <input type="text" placeholder="Type a message..." ng-model="message" ng-enter="sendMessage()">
+</ion-footer-bar>

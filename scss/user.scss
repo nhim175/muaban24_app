@@ -24,4 +24,17 @@
       }
     }
   }
+  .cover {
+    position: relative;
+    .actions {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      i {
+        font-size: 32px;
+        margin: 0px 10px 10px 0px;
+        color: $positive;
+      }
+    }
+  }
 }

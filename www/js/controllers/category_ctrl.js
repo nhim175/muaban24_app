@@ -4,12 +4,10 @@ angular.module('dongnat.controllers')
   $scope.MEDIA_URL = SettingsService.MEDIA_URL;
   $scope.PRODUCT_THUMB_SIZE = SettingsService.PRODUCT_THUMB_SIZE;
 
-  $scope.category = CategoryService.find(parseInt($stateParams.id));
-
-  ProductService.getByCategory({
-    categoryId: $scope.category.id,
-    onSuccess: function(products) {
-      $scope.products = products;
+  CategoryService.find({
+    id: $stateParams.id,
+    onSuccess: function(category) {
+      $scope.category = category;
     },
     onError: function(error) {
       console.log(error);

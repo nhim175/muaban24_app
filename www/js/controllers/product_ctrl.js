@@ -1,56 +1,22 @@
 angular.module('dongnat.controllers')
 
-.controller('ProductCtrl', function($scope, $stateParams, $ionicScrollDelegate, $ionicPopup, ProductService, SettingsService, UserService, CategoryService, CommentService) {
+.controller('ProductCtrl', function($scope, $stateParams, $ionicScrollDelegate, $ionicPopup, $ionicSlideBoxDelegate, ProductService, SettingsService, UserService, CategoryService, CommentService) {
   $scope.MEDIA_URL = SettingsService.MEDIA_URL;
   $scope.PROFILE_PHOTO_SIZE = SettingsService.PROFILE_PHOTO_SIZE;
 
-  $scope.product = ProductService.find(parseInt($stateParams.id));
+  ProductService.find({
+    id: parseInt($stateParams.id),
+    onSuccess: onFindProductSuccess,
+    onError: function(error) { console.log(error); }
+  });
+
+  function onFindProductSuccess(product) {
+    $scope.product = product;
+    $scope.isLiked = isLiked();
+    $ionicSlideBoxDelegate.update();
+  }
+
   $scope.user = UserService.info();
-  $scope.category = CategoryService.find(parseInt($scope.product.categories[0]));
-  $scope.likes = [];
-
-  ProductService.getLikes({
-    data: {
-      productId: $scope.product.id
-    },
-    onSuccess: function(data) {
-      $scope.likes = data;
-      $scope.isLiked = isLiked();
-    },
-    onError: function(error) {
-      console.log(error);
-    }
-  });
-
-  UserService.find({
-    data: {
-      id: $scope.product.userId
-    },
-    onSuccess: function(data) {
-      $scope.owner = data;
-    },
-    onError: function(error) {
-      console.log(error);
-    }
-  });
-
-  CommentService.getByProduct({
-    productId: $scope.product.id,
-    onSuccess: function(data) {
-      $scope.comments = data;
-      _.each($scope.comments, function(comment) {
-        UserService.find({
-          data: { id: comment.userId },
-          onSuccess: function(user) {
-            comment.user = user;
-          }
-        });
-      }); 
-    },
-    onError: function(error) {
-      console.log(error);
-    }
-  })
 
   $scope.goToCommentBox = function() {
     $ionicScrollDelegate.$getByHandle('productScroll').scrollBottom(true);
@@ -58,12 +24,15 @@ angular.module('dongnat.controllers')
 
   $scope.doComment = function() {
     if (!$scope.comment.content) return;
-    $scope.comment.productId = $scope.product.id;
-    $scope.comment.userId = UserService.info().id;
+    $scope.comment.product = $scope.product;
     $scope.comment.user = UserService.info();
-    $scope.comments.push($scope.comment);
+    $scope.product.comments.push($scope.comment);
     CommentService.create({
-      data: $scope.comment,
+      data: {
+        user: $scope.comment.user.id,
+        product: $scope.comment.product.id,
+        content: $scope.comment.content
+      },
       onSuccess: function(data) { console.log(data); },
       onError: function(error) { console.log(error); }
     });
@@ -79,7 +48,7 @@ angular.module('dongnat.controllers')
       });
     } else {
       if($scope.isLiked) {
-        $scope.likes = _.reject($scope.likes, function(user) {
+        $scope.product.likes = _.reject($scope.product.likes, function(user) {
           return $scope.user.id == user.id;
         });
         ProductService.unlike({
@@ -91,7 +60,7 @@ angular.module('dongnat.controllers')
           onError: function(error) { console.log(error); }
         });
       } else {
-        $scope.likes.push($scope.user);
+        $scope.product.likes.push($scope.user);
         ProductService.like({
           data: {
             productId: $scope.product.id,
@@ -107,6 +76,6 @@ angular.module('dongnat.controllers')
 
   function isLiked() {
     if(!$scope.user) return false;
-    return !!_.findWhere($scope.likes, {id: $scope.user.id});
+    return !!_.findWhere($scope.product.likes, {id: $scope.user.id});
   };
 });

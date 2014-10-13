@@ -14,10 +14,10 @@ angular.module('dongnat.services')
     _list = list;
   };
 
-  var find = function(id) {
-    return _.find(_list, function(category) {
-      return category.id === id;
-    });
+  var find = function(params) {
+    $http.get(SettingsService.API_URL + '/category/' + params.id)
+      .success(params.onSuccess)
+      .error(params.onError);
   };
 
   return {

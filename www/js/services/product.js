@@ -14,10 +14,10 @@ angular.module('dongnat.services')
     return _list;
   };
 
-  var find = function(id) {
-    return _.find(_list, function(product) {
-      return product.id === id;
-    });
+  var find = function(params) {
+    $http.get(SettingsService.API_URL + '/product/' + params.id)
+    .success(params.onSuccess)
+    .error(params.onError);
   };
 
   var getByCategory = function(params) {
@@ -58,12 +58,6 @@ angular.module('dongnat.services')
       .error(params.onError);
   };
 
-  var getLikes = function(params) {
-    $http.get(SettingsService.API_URL + '/product/' + params.data.productId + '/likes')
-      .success(params.onSuccess)
-      .error(params.onError);
-  };
-
   var search = function(params) {
     $http.get(SettingsService.API_URL + '/product/search/' + params.data.query)
       .success(params.onSuccess)
@@ -98,7 +92,6 @@ angular.module('dongnat.services')
     getByUser: getByUser,
     like: like,
     unlike: unlike,
-    getLikes: getLikes,
     search: search
   }
 });

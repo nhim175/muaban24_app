@@ -19,15 +19,15 @@
       <div class="col col-50 product" ng-repeat="product in products track by $index">
         <div class="item item-image">
           <a href="#/app/product/{{product.id}}">
-            <img ng-src="{{ MEDIA_URL + '/' + product.userId + '/' + PRODUCT_THUMB_SIZE + '/' + product.images[0] }}" />
+            <img ng-src="{{ MEDIA_URL + '/' + product.user.id + '/' + PRODUCT_THUMB_SIZE + '/' + product.images[0].filename }}" />
           </a>
         </div>
         <div class="info">
           <span class="like">
-            <i class="icon ion-ios7-heart-outline"></i> {{product.likes}}
+            <i class="icon ion-ios7-heart-outline"></i> {{product.likes.length}}
           </span>
           <span class="comment">
-            <i class="icon ion-ios7-chatbubble-outline"></i> {{product.comments}}
+            <i class="icon ion-ios7-chatbubble-outline"></i> {{product.comments.length}}
           </span>
           <span class="price">
           ${{product.price || 0}}
