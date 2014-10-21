@@ -130,3 +130,33 @@
 2014-10-09 22:18:00.542 DongNat[23791:746839] Communications error: <OS_xpc_error: <error: 0x31fa5f4> { count = 1, contents =
 	"XPCErrorDescription" => <string: 0x31fa83c> { length = 22, contents = "Connection interrupted" }
 }>
+2014-10-13 15:41:56.573 DongNat[42255:1552396] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Data/Application/E2947778-10A0-4A53-9294-A6FDABC9583E/Library/Cookies/Cookies.binarycookies
+2014-10-13 15:41:58.288 DongNat[42255:1552396] Multi-tasking -> Device: YES, App: YES
+2014-10-13 15:41:58.316 DongNat[42255:1552396] Unlimited access to network resources
+2014-10-13 15:41:58.602 DongNat[42255:1552396] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-10-13 15:41:58.603 DongNat[42255:1552396] [CDVTimer][statusbar] 0.186980ms
+2014-10-13 15:41:58.603 DongNat[42255:1552396] [CDVTimer][keyboard] 0.105023ms
+2014-10-13 15:41:58.603 DongNat[42255:1552396] [CDVTimer][TotalPluginStartup] 0.703990ms
+2014-10-13 15:41:59.055 DongNat[42255:1552396] Resetting plugins due to page load.
+2014-10-13 15:41:59.801 DongNat[42255:1552396] Finished load of: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Bundle/Application/10EAAC5E-3056-4318-9125-246C3316F1CF/DongNat.app/www/index.html#/app/home
+2014-10-13 15:42:10.493 DongNat[42255:1552396] You are not permitted to perform this action.
+2014-10-13 15:42:13.179 DongNat[42255:1552396] You are not permitted to perform this action.
+2014-10-13 18:29:48.148 DongNat[44893:1642672] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Data/Application/18C2C127-F6E2-4174-A4A5-0F9F3B52551D/Library/Cookies/Cookies.binarycookies
+2014-10-13 18:29:49.842 DongNat[44893:1642672] Multi-tasking -> Device: YES, App: YES
+2014-10-13 18:29:49.871 DongNat[44893:1642672] Unlimited access to network resources
+2014-10-13 18:29:50.129 DongNat[44893:1642672] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-10-13 18:29:50.130 DongNat[44893:1642672] [CDVTimer][statusbar] 0.270963ms
+2014-10-13 18:29:50.130 DongNat[44893:1642672] [CDVTimer][keyboard] 0.123024ms
+2014-10-13 18:29:50.130 DongNat[44893:1642672] [CDVTimer][TotalPluginStartup] 0.836968ms
+2014-10-13 18:29:50.479 DongNat[44893:1642672] Resetting plugins due to page load.
+2014-10-13 18:29:51.491 DongNat[44893:1642672] Finished load of: file:///Users/thinhpham/Library/Developer/CoreSimulator/Devices/38C68C6E-97C3-40E2-891C-2A1382139D35/data/Containers/Bundle/Application/DA6CF2C9-B868-4421-A9B8-D563D8CEC0BE/DongNat.app/www/index.html#/app/home
+2014-10-13 18:30:18.102 DongNat[44893:1642672] {"from":3,"to":1,"content":"Hello, Nice to meet you!","createdAt":"2014-10-13T09:30:18.094Z","updatedAt":"2014-10-13T09:30:18.094Z","id":11}
+2014-10-13 18:30:35.881 DongNat[44893:1642672] {"from":3,"to":1,"content":"How are you","createdAt":"2014-10-13T09:30:35.876Z","updatedAt":"2014-10-13T09:30:35.876Z","id":12}
+2014-10-13 18:30:37.362 DongNat[44893:1642672] {"from":3,"to":1,"content":"How are you?","createdAt":"2014-10-13T09:30:37.359Z","updatedAt":"2014-10-13T09:30:37.359Z","id":13}
+2014-10-13 18:30:42.874 DongNat[44893:1642672] {"from":3,"to":1,"content":"How are you?","createdAt":"2014-10-13T09:30:42.871Z","updatedAt":"2014-10-13T09:30:42.871Z","id":14}
+2014-10-13 18:30:45.778 DongNat[44893:1642672] {"from":3,"to":1,"content":"How are you?","createdAt":"2014-10-13T09:30:45.774Z","updatedAt":"2014-10-13T09:30:45.774Z","id":15}
+2014-10-13 18:30:46.132 DongNat[44893:1642672] {"from":3,"to":1,"content":"How are you?","createdAt":"2014-10-13T09:30:46.128Z","updatedAt":"2014-10-13T09:30:46.128Z","id":16}
+2014-10-13 18:31:17.908 DongNat[44893:1642672] {"from":3,"to":1,"content":"Hello","createdAt":"2014-10-13T09:31:17.904Z","updatedAt":"2014-10-13T09:31:17.904Z","id":17}
+2014-10-14 08:35:28.423 DongNat[44893:1818967] Communications error: <OS_xpc_error: <error: 0x31e25f4> { count = 1, contents =
+	"XPCErrorDescription" => <string: 0x31e283c> { length = 22, contents = "Connection interrupted" }
+}>

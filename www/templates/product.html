@@ -77,7 +77,7 @@
     <div class="list comment-list" ng-hide="comments.length == 0">
 
         <div class="item item-avatar" ng-repeat="comment in product.comments track by $index">
-          <img ng-src="{{!!comment.user && MEDIA_URL + '/' + comment.user.id + '/' + PROFILE_PHOTO_SIZE + '/' + comment.user.profile_image || ''}}">
+          <img ng-src="{{MEDIA_URL + '/' + comment.user.id + '/' + PROFILE_PHOTO_SIZE + '/' + comment.user.profile_image || ''}}">
           <h2><a href="#/app/user/{{comment.user.id}}" class="unstyled">{{comment.user.name}}</a></h2>
           <p>{{comment.content}}</p>
         </div>

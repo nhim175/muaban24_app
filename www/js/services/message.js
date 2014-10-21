@@ -13,11 +13,19 @@ angular.module('dongnat.services')
     $http.post(SettingsService.API_URL + '/message/create', params.data)
       .success(params.onSuccess)
       .error(params.onError);
-  }
+  };
+
+  var all = function(params) {
+    var token = UserService.info().token;
+    $http.get(SettingsService.API_URL + '/message', {params: { token: token }})
+      .success(params.onSuccess)
+      .error(params.onError);
+  };
 
   return {
     getByUser: getByUser,
-    create: create
+    create: create,
+    all: all
   }
   
 });

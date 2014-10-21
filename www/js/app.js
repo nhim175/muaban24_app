@@ -120,6 +120,16 @@ angular.module('dongnat', ['ionic', 'dongnat.controllers'])
       }
     })
 
+    .state('app.messages', {
+      url: "/messages",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/messages.html",
+          controller: 'MessageListCtrl'
+        }
+      }
+    })    
+
     .state('app.user_message', {
       url: "/message/:userId",
       views: {
