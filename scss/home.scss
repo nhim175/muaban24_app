@@ -1,13 +1,9 @@
-$new-btn-color: rgb(226, 114, 114);
 
 .nav-bar {
   .title {
-    overflow: visible;
     img {
       height: 80%;
       vertical-align: middle;
-      position: relative;
-      left: -30px;
     }
   }
   
@@ -19,6 +15,9 @@ $new-btn-color: rgb(226, 114, 114);
 }
 
 .home-ctrl {
+  .home-scroll {
+    padding-top: $category-slider-height;
+  }
   .product {
     float: left;
     .info {
@@ -37,6 +36,9 @@ $new-btn-color: rgb(226, 114, 114);
         padding-right: 5px;
         font-weight: bold;
       }
+    }
+    &:last-child {
+      margin-bottom: 40px;
     }
   }
   .camera-btn {
@@ -60,12 +62,12 @@ $new-btn-color: rgb(226, 114, 114);
       display: block;
       text-align: center;
       line-height: 80px;
-      background: $new-btn-color;
+      background: $main-color;
       color: #fff;
       border-radius: 50%;
       z-index: 10;
       &.activated {
-        background: darken($new-btn-color, 10%);
+        background: darken($main-color, 10%);
       }
     }
   }

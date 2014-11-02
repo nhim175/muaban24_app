@@ -6008,7 +6008,7 @@ ionic.scroll = {
     },
 
     align: function(align) {
-
+      return false;
       align || (align = this.alignTitle);
 
       // Find the titleEl element

@@ -1,0 +1,17 @@
+<div class="modal new-product">
+  <ion-header-bar>
+    <h1 class="title">Categories</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="hideCategories()">
+        <i class="icon ion-ios7-close-empty"></i>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+      <a class="item" ng-click="hideCategories()" ng-repeat="category in categories track by $index" href="#/app/category/{{category.id}}">
+        {{category.name}}
+      </a>
+    </div>
+  </ion-content>
+</div>

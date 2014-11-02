@@ -1,0 +1,98 @@
+<ion-view title="{{product.title}}" class="product-ctrl">
+  <ion-nav-buttons side="left">
+  </ion-nav-buttons>
+  <ion-content class="has-header" delegate-handle="productScroll">
+    <ion-slide-box pager-click="changePage(index)" class="intro">
+      <ion-slide ng-repeat="image in product.images track by $index">
+        <div class="product-image">
+          <img ng-src="{{MEDIA_URL}}/{{product.user.id}}/{{image.filename}}">
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+    <div class="row bg-white border-bottom">
+      <div class="col col-33">
+        <div class="price">${{product.price || 0}}</div>
+        <div class="transaction-mode">{{product.transactionMode}}</div>
+      </div>
+      <div class="col col-67">
+        <div class="product-title">{{product.title}}</div>
+      </div>
+    </div>
+    <div class="row bg-white actions">
+      <div class="col col-67">
+        <a class="button button-outline icon-left ion-ios7-heart button-positive button-small" ng-click="doLike()" ng-class="{'liked': $parent.isLiked}">
+          Like
+        </a>
+        <a class="button button-outline icon-left ion-ios7-chatbubble button-positive button-small" ng-click="goToCommentBox()"> 
+          Comment
+        </a>
+      </div>
+    </div>
+    <div class="row bg-white">
+      <div class="col likes">
+      {{product.likes.length}} people like this.
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-avatar">
+        <img ng-src="{{ !!product.user && MEDIA_URL + '/' + product.user.id  + '/' + PROFILE_PHOTO_SIZE + '/' + product.user.profile_image || '' }}">
+        <h2><a href="#/app/user/{{product.user.id}}" class="unstyled">{{product.user.name}}</a></h2>
+        <p>Owner info here</p>
+      </div>
+      <div class="item item-body">
+        <p class="description">
+          {{product.description}}
+        </p>
+        <p class="ago text-small"><i class="icon ion-ios7-clock-outline"></i> {{product.createdAt | moment: 'fromNow'}}</p>
+      </div>
+    </div>
+    <div class="list list-inset extra-info">
+      <div class="item row">
+        <div class="col col-33">Category</div>
+        <div class="col col-66">
+          <p ng-repeat="category in product.categories"><a href="#/app/category/{{category.id}}">{{category.name}}</a></p>
+        </div>
+      </div>
+      <div class="item row">
+        <div class="col col-33">For</div>
+        <div class="col col-66">
+          <p ng-if="product.forFree">Free</p>
+          <p ng-if="product.forSale">Sale</p>
+          <p ng-if="product.forExchange">Exchange</p>
+        </div>
+      </div>
+      <div class="item row" ng-if="product.exchangeInfo">
+        <div class="col col-33">Exchange info</div>
+        <div class="col col-66">
+          {{product.exchangeInfo}}
+        </div>
+      </div>
+      <div class="item row" ng-if="product.transactionAddress">
+        <div class="col col-33">Address</div>
+        <div class="col col-66">
+          {{product.transactionAddress}}
+        </div>
+      </div>
+    </div>
+    <div class="list comment-list" ng-hide="comments.length == 0">
+
+        <div class="item item-avatar" ng-repeat="comment in product.comments track by $index">
+          <img ng-src="{{MEDIA_URL + '/' + comment.user.id + '/' + PROFILE_PHOTO_SIZE + '/' + comment.user.profile_image || ''}}">
+          <h2><a href="#/app/user/{{comment.user.id}}" class="unstyled">{{comment.user.name}}</a></h2>
+          <p>{{comment.content}}</p>
+        </div>
+
+    </div>
+
+    <div class="row" ng-hide="user == null">
+      <div class="col col-80">
+        <textarea placeholder="Write a comment" class="comment" ng-model="$parent.comment.content"></textarea>
+      </div>
+      <div class="col col-20 text-right">
+        <button class="button button-positive icon ion-paper-airplane" ng-click="doComment()"></button>
+      </div>
+    </div>
+    <p class="padding" ng-show="user == null"><a href="#/app/login">Login</a> to comment on this product.</p>
+  </ion-content>
+</ion-view>
+

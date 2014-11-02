@@ -47,6 +47,12 @@ angular.module('dongnat', ['ionic', 'dongnat.controllers'])
           templateUrl: "templates/home.html",
           controller: 'HomeCtrl'
         }
+      },
+      onEnter: function() {
+        $('body').addClass('show-category-slider');
+      },
+      onExit: function() {
+        $('body').removeClass('show-category-slider');
       }
     })
 

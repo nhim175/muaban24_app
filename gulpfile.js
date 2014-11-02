@@ -10,8 +10,10 @@ var sh = require('shelljs');
 var paths = {
   sass: ['./scss/**/*.scss'],
   js: [
+    './www/lib/jquery/dist/jquery.js',
     './www/lib/underscore/underscore-min.js',
     './www/lib/moment/min/moment.min.js',
+    './www/lib/slick.js/slick/slick.js',
     './www/js/**/*.js'
   ]
 };

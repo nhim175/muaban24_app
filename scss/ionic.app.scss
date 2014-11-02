@@ -17,6 +17,8 @@ $dark:                            #444 !default;
  
 //$bar-height: 64px !default;
 $status-bar-height: 20px !default;
+$category-slider-height: 30px !default;
+$main-color: rgb(226, 114, 114) !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -27,8 +29,10 @@ $font-path: "../fonts" !default;
   src: url("#{$font-path}/Fabada-regular.ttf");
 }
 
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+@import "www/lib/slick.js/slick/slick";
 @import "./intro"; 
 @import "./home";
 @import "./custom";
@@ -42,3 +46,4 @@ $font-path: "../fonts" !default;
 @import "./user";
 @import "./search";
 @import "./message";
+@import "./category_slider";

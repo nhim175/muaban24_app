@@ -1,0 +1,69 @@
+<ion-view class="me-ctrl" hide-back-button="true" title="Me">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-tabs class="tabs-light tabs-icon-only">
+
+    <ion-tab title="Info" icon-on="ion-ios7-person" icon-off="ion-ios7-person-outline" ng-controller="MeCtrl">
+      <ion-scroll style="height: 100%;">
+        <!-- User info content -->
+        <div class="row">
+          <div class="col col-50 col-offset-25">
+            <label>
+              <img class="profile-img" ng-src="{{MEDIA_URL}}/{{user.id}}/{{PROFILE_PHOTO_SIZE}}/{{user.profile_image}}" ng-show="user.profile_image" />
+              <img class="profile-default" src="img/avatar.svg" ng-hide="user.profile_image"/>
+              <file-upload class="form-control" file-id="user.profile_image"></file-upload>
+            </label>
+          </div>
+        </div>
+        <div class="list">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Name</span>
+            <input type="text" placeholder="Khoa Biu" ng-model="user.name">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Password</span>
+            <input type="password" ng-model="user.password">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Phone</span>
+            <input type="text" placeholder="080-9431-6868" ng-model="user.phone">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Address</span>
+            <input type="text" ng-model="user.address">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Yahoo</span>
+            <input type="text" ng-model="user.yahoo">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Skype</span>
+            <input type="text" ng-model="user.skype">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Facebook</span>
+            <input type="text" ng-model="user.facebook">
+          </label>
+          <div class="padding">
+            <button class="button button-block button-positive" ng-click="updateInfo()">Save</button>
+          </div>
+        </div>
+      </ion-scroll>
+    </ion-tab>
+
+    <ion-tab title="About" icon-on="ion-ios7-clock" icon-off="ion-ios7-clock-outline">
+      <!-- Tab 2 content -->
+    </ion-tab>
+
+    <ion-tab title="Settings" icon-on="ion-ios7-gear" icon-off="ion-ios7-gear-outline">
+      <!-- Tab 3 content -->
+      <div class="padding">
+        <button class="button button-block button-assertive" ng-click="logout()">
+          Log out
+        </button>
+      </div>
+    </ion-tab>
+
+  </ion-tabs>
+</ion-view>
