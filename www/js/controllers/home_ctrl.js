@@ -135,18 +135,24 @@ angular.module('dongnat.controllers')
   $scope.product = ProductService.empty();
 
   $scope.doRefresh = function() {
-    ProductService.fetch({
-      onSuccess: function(data) {
-        $scope.products = data;
-        ProductService.refresh(data);
-        $scope.$broadcast('scroll.refreshComplete');
-      },
-      onError: function(error) {
-        console.log(error);
-        $scope.$broadcast('scroll.refreshComplete');
-      }
-    });
+    $rootScope.$broadcast('home_ctrl::pull_to_refresh');
+    // ProductService.fetch({
+    //   onSuccess: function(data) {
+    //     $scope.products = data;
+    //     ProductService.refresh(data);
+    //     $scope.$broadcast('scroll.refreshComplete');
+    //   },
+    //   onError: function(error) {
+    //     console.log(error);
+    //     $scope.$broadcast('scroll.refreshComplete');
+    //   }
+    // });
   }
+
+  $rootScope.$on('home_ctrl::pull_to_refresh_done', function(event, products) {
+    $scope.products.unshift.apply($scope.products, products);
+    $scope.$broadcast('scroll.refreshComplete');
+  });
 
   if($cacheFactory.get('HomeCtrl')) { 
     $scope.cache = $cacheFactory.get('HomeCtrl');

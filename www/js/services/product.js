@@ -18,6 +18,10 @@ angular.module('dongnat.services')
     return $http.get(SettingsService.API_URL + '/product/query', {params: params});
   };
 
+  var fetch_new_products = function(params) {
+    return $http.get(SettingsService.API_URL + '/product/fetch', {params: params});
+  };
+
   var find = function(params) {
     $http.get(SettingsService.API_URL + '/product/' + params.id)
     .success(params.onSuccess)
@@ -97,6 +101,7 @@ angular.module('dongnat.services')
     like: like,
     unlike: unlike,
     search: search,
-    query: query
+    query: query,
+    fetch_new_products: fetch_new_products
   }
 });
