@@ -1,6 +1,6 @@
 angular.module('dongnat.controllers')
 
-.controller('HomeCtrl', function($scope, $rootScope, $timeout, $ionicNavBarDelegate, $ionicModal, $ionicPopup, $ionicLoading, $ionicScrollDelegate, CategoryService, ProductService, SettingsService) {
+.controller('HomeCtrl', function($scope, $rootScope, $timeout, $ionicNavBarDelegate, $ionicModal, $ionicPopup, $ionicLoading, $ionicScrollDelegate, $cacheFactory, CategoryService, ProductService, SettingsService) {
 
   $scope.PRODUCT_THUMB_SIZE = SettingsService.PRODUCT_THUMB_SIZE;
   $scope.MEDIA_URL = SettingsService.MEDIA_URL;
@@ -66,20 +66,6 @@ angular.module('dongnat.controllers')
       console.log(error);
     }
   });
-
-  if(ProductService.all()) {
-    $scope.products = ProductService.all();
-  } else {
-    ProductService.fetch({
-      onSuccess: function(data) {
-        $scope.products = data;
-        ProductService.refresh(data);
-      },
-      onError: function(error) {
-        console.log(error);
-      }
-    });
-  }
  
   $scope.showAddProduct = function() {
     $scope.addProductModal.show();
@@ -161,4 +147,24 @@ angular.module('dongnat.controllers')
       }
     });
   }
+
+  if($cacheFactory.get('HomeCtrl')) { 
+    $scope.cache = $cacheFactory.get('HomeCtrl');
+  } else {
+    $scope.cache = $cacheFactory('HomeCtrl');
+  }
+
+  $scope.products = $scope.cache.get('products');
+
+  $rootScope.$on('category_slider::before_changed', function() {
+    $ionicLoading.show({
+      template: 'Loading products...<br/><i class="icon ion-loading-c" style="font-size: 24px"></i>'
+    });
+  });
+
+  $rootScope.$on('category_slider::after_changed', function(event, products) {
+    $ionicLoading.hide();
+    $scope.cache.put('products', products);
+    $scope.products = products;
+  });
 });

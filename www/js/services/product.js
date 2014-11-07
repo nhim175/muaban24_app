@@ -14,6 +14,10 @@ angular.module('dongnat.services')
     return _list;
   };
 
+  var query = function(params) {
+    return $http.get(SettingsService.API_URL + '/product/query', {params: params});
+  };
+
   var find = function(params) {
     $http.get(SettingsService.API_URL + '/product/' + params.id)
     .success(params.onSuccess)
@@ -92,6 +96,7 @@ angular.module('dongnat.services')
     getByUser: getByUser,
     like: like,
     unlike: unlike,
-    search: search
+    search: search,
+    query: query
   }
 });

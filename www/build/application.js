@@ -11409,7 +11409,10 @@ angular.module('dongnat.controllers')
 });
 angular.module('dongnat.controllers')
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, UserService, SettingsService, CategoryService) {
+.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $timeout, UserService, SettingsService, CategoryService, ProductService) {
+  var currentCategory = 0;
+  var timestamp;
+
   // Form data for the login modal
   $scope.MEDIA_URL = SettingsService.MEDIA_URL;
   $scope.PROFILE_PHOTO_SIZE = SettingsService.PROFILE_PHOTO_SIZE;
@@ -11436,11 +11439,40 @@ angular.module('dongnat.controllers')
       $scope.categories = data;
     }
   });
+
+  var fetch_products = function(category_id) {
+    var category_id = category_id || 0;
+
+    $rootScope.$broadcast('category_slider::before_changed');
+
+    var onSuccess = function(data, status, headers, config) {
+      timestamp = data.timestamp;
+      $rootScope.$broadcast('category_slider::after_changed', data.products);
+    };
+
+    var onError = function() {
+      console.log('fetch error');
+    };
+
+    ProductService.query({
+      category: category_id
+    }).success(onSuccess).error(onError);
+  }
+
+  fetch_products();
+
+  $rootScope.$on('category_slider::changed', function($event, category_id) {
+    console.log('switch to category', category_id);
+    currentCategory = category_id;
+
+    fetch_products(category_id);
+    
+  });
 });
 
 angular.module('dongnat.controllers')
 
-.controller('HomeCtrl', function($scope, $rootScope, $timeout, $ionicNavBarDelegate, $ionicModal, $ionicPopup, $ionicLoading, $ionicScrollDelegate, CategoryService, ProductService, SettingsService) {
+.controller('HomeCtrl', function($scope, $rootScope, $timeout, $ionicNavBarDelegate, $ionicModal, $ionicPopup, $ionicLoading, $ionicScrollDelegate, $cacheFactory, CategoryService, ProductService, SettingsService) {
 
   $scope.PRODUCT_THUMB_SIZE = SettingsService.PRODUCT_THUMB_SIZE;
   $scope.MEDIA_URL = SettingsService.MEDIA_URL;
@@ -11506,20 +11538,6 @@ angular.module('dongnat.controllers')
       console.log(error);
     }
   });
-
-  if(ProductService.all()) {
-    $scope.products = ProductService.all();
-  } else {
-    ProductService.fetch({
-      onSuccess: function(data) {
-        $scope.products = data;
-        ProductService.refresh(data);
-      },
-      onError: function(error) {
-        console.log(error);
-      }
-    });
-  }
  
   $scope.showAddProduct = function() {
     $scope.addProductModal.show();
@@ -11601,6 +11619,26 @@ angular.module('dongnat.controllers')
       }
     });
   }
+
+  if($cacheFactory.get('HomeCtrl')) { 
+    $scope.cache = $cacheFactory.get('HomeCtrl');
+  } else {
+    $scope.cache = $cacheFactory('HomeCtrl');
+  }
+
+  $scope.products = $scope.cache.get('products');
+
+  $rootScope.$on('category_slider::before_changed', function() {
+    $ionicLoading.show({
+      template: 'Loading products...<br/><i class="icon ion-loading-c" style="font-size: 24px"></i>'
+    });
+  });
+
+  $rootScope.$on('category_slider::after_changed', function(event, products) {
+    $ionicLoading.hide();
+    $scope.cache.put('products', products);
+    $scope.products = products;
+  });
 });
 angular.module('dongnat.controllers')
 
@@ -12012,7 +12050,7 @@ angular.module('dongnat.directives')
 
 angular.module('dongnat.directives')
 
-.directive('categorySlider', function(CategoryService, $timeout) {
+.directive('categorySlider', function(CategoryService, $timeout, $rootScope) {
   return {
     restrict: 'EA',
     replace: false,
@@ -12031,7 +12069,10 @@ angular.module('dongnat.directives')
           slidesToShow: 1,
           centerMode: true,
           variableWidth: true,
-          arrows: false
+          arrows: false,
+          onAfterChange: function() {
+            $rootScope.$broadcast('category_slider::changed',$('[index='+ $(element).slickCurrentSlide() + ']', element).data('id'));
+          }
         });
       }, 1000);
       
@@ -12306,6 +12347,10 @@ angular.module('dongnat.services')
     return _list;
   };
 
+  var query = function(params) {
+    return $http.get(SettingsService.API_URL + '/product/query', {params: params});
+  };
+
   var find = function(params) {
     $http.get(SettingsService.API_URL + '/product/' + params.id)
     .success(params.onSuccess)
@@ -12384,17 +12429,18 @@ angular.module('dongnat.services')
     getByUser: getByUser,
     like: like,
     unlike: unlike,
-    search: search
+    search: search,
+    query: query
   }
 });
 angular.module( 'dongnat.services')
 
 .factory('SettingsService', function() {
-  //var HOST = 'http://192.168.3.5';
-  var HOST = 'http://www.thitruong24gio.net';
+  var HOST = 'http://localhost';
+  //var HOST = 'http://www.thitruong24gio.net';
   var API_URL = HOST + ':1337';
-  //var MEDIA_URL = HOST + ':1708';
-  var MEDIA_URL = 'http://media.thitruong24gio.net';
+  var MEDIA_URL = HOST + ':1708';
+  //var MEDIA_URL = 'http://media.thitruong24gio.net';
   var PROFILE_PHOTO_SIZE = '128x128';
   var PRODUCT_THUMB_SIZE = '256x256';
 
