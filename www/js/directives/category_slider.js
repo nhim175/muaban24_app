@@ -2,7 +2,7 @@
 
 angular.module('dongnat.directives')
 
-.directive('categorySlider', function(CategoryService, $timeout) {
+.directive('categorySlider', function(CategoryService, $timeout, $rootScope) {
   return {
     restrict: 'EA',
     replace: false,
@@ -21,7 +21,10 @@ angular.module('dongnat.directives')
           slidesToShow: 1,
           centerMode: true,
           variableWidth: true,
-          arrows: false
+          arrows: false,
+          onAfterChange: function() {
+            $rootScope.$broadcast('category_slider::changed',$('[index='+ $(element).slickCurrentSlide() + ']', element).data('id'));
+          }
         });
       }, 1000);
       
