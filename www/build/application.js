@@ -11413,6 +11413,7 @@ angular.module('dongnat.controllers')
   var currentCategory = 0;
   var lastestTimestamp;
   var timestamp;
+  var page = 0;
 
   // Form data for the login modal
   $scope.MEDIA_URL = SettingsService.MEDIA_URL;
@@ -11441,34 +11442,45 @@ angular.module('dongnat.controllers')
     }
   });
 
-  var fetch_products = function(category_id) {
+  var fetch_products = function(category_id, page, timestamp) {
     var category_id = category_id || 0;
-
-    $rootScope.$broadcast('category_slider::before_changed');
-
-    var onSuccess = function(data, status, headers, config) {
-      timestamp = data.timestamp;
-      lastestTimestamp = timestamp;
-      $rootScope.$broadcast('category_slider::after_changed', data.products);
+    var page = page || 1;
+    var params = {
+      category: category_id,
+      page: page
     };
 
-    var onError = function() {
-      console.log('fetch error');
-    };
+    if(timestamp) {
+      params.timestamp = timestamp;
+    }
 
-    ProductService.query({
-      category: category_id
-    }).success(onSuccess).error(onError);
+    return ProductService.query(params);
   }
 
-  fetch_products();
+  // Fetch products for first page
+  var onFetchFirstPageSuccess = function(data, status, headers, config) {
+    timestamp = data.timestamp;
+    lastestTimestamp = timestamp;
+    page = 1;
+    $rootScope.$broadcast('category_slider::after_changed', data.products);
+  };
 
+  var onError = function() {
+    console.log('fetch error');
+  };
+
+  $rootScope.$broadcast('category_slider::before_changed');
+
+  //fetch_products().success(onFetchFirstPageSuccess).error(onError);
+
+  // When user change category
   $rootScope.$on('category_slider::changed', function($event, category_id) {
     console.log('switch to category', category_id);
     currentCategory = category_id;
-    fetch_products(category_id);
+    fetch_products(category_id).success(onFetchFirstPageSuccess).error(onError);
   });
 
+  // When user pull to refresh
   $rootScope.$on('home_ctrl::pull_to_refresh', function() {
     console.log('handling pull to refresh');
     var onSuccess = function(data, status, headers, config) {
@@ -11485,6 +11497,15 @@ angular.module('dongnat.controllers')
       category: currentCategory
     }).success(onSuccess).error(onError);
   });
+
+  // When user scroll down to bottom
+  $rootScope.$on('home_ctrl::infinite_scroll', function() {
+    var onSuccess = function(data, status, headers, config) {
+      if (data.products.length == 0) { page -= 1; }
+      $rootScope.$broadcast('category_slider::infinite_scroll_done', data.products);
+    };
+    fetch_products(currentCategory, ++page, timestamp).success(onSuccess).error(onError);
+  });
 });
 
 angular.module('dongnat.controllers')
@@ -11493,6 +11514,7 @@ angular.module('dongnat.controllers')
 
   $scope.PRODUCT_THUMB_SIZE = SettingsService.PRODUCT_THUMB_SIZE;
   $scope.MEDIA_URL = SettingsService.MEDIA_URL;
+  $scope.products = [];
 
   var scrollDelegate = $ionicScrollDelegate.$getByHandle('homeScroll');
   $scope.$on('$viewContentLoaded', function() {
@@ -11625,17 +11647,6 @@ angular.module('dongnat.controllers')
 
   $scope.doRefresh = function() {
     $rootScope.$broadcast('home_ctrl::pull_to_refresh');
-    // ProductService.fetch({
-    //   onSuccess: function(data) {
-    //     $scope.products = data;
-    //     ProductService.refresh(data);
-    //     $scope.$broadcast('scroll.refreshComplete');
-    //   },
-    //   onError: function(error) {
-    //     console.log(error);
-    //     $scope.$broadcast('scroll.refreshComplete');
-    //   }
-    // });
   }
 
   $rootScope.$on('home_ctrl::pull_to_refresh_done', function(event, products) {
@@ -11649,7 +11660,7 @@ angular.module('dongnat.controllers')
     $scope.cache = $cacheFactory('HomeCtrl');
   }
 
-  $scope.products = $scope.cache.get('products');
+  $scope.products = $scope.cache.get('products') || [];
 
   $rootScope.$on('category_slider::before_changed', function() {
     $ionicLoading.show({
@@ -11661,6 +11672,18 @@ angular.module('dongnat.controllers')
     $ionicLoading.hide();
     $scope.cache.put('products', products);
     $scope.products = products;
+    $scope.noMoreProducts = false;
+  });
+
+  $scope.loadMore = function() {
+    console.log('loading more');
+    $rootScope.$broadcast('home_ctrl::infinite_scroll');
+  }
+
+  $rootScope.$on('category_slider::infinite_scroll_done', function(event, products) {
+    if(products.length == 0) { $scope.noMoreProducts = true; }
+    $scope.products.push.apply($scope.products, products);
+    $scope.$broadcast('scroll.infiniteScrollComplete');
   });
 });
 angular.module('dongnat.controllers')

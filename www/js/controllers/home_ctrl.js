@@ -4,6 +4,7 @@ angular.module('dongnat.controllers')
 
   $scope.PRODUCT_THUMB_SIZE = SettingsService.PRODUCT_THUMB_SIZE;
   $scope.MEDIA_URL = SettingsService.MEDIA_URL;
+  $scope.products = [];
 
   var scrollDelegate = $ionicScrollDelegate.$getByHandle('homeScroll');
   $scope.$on('$viewContentLoaded', function() {
@@ -136,17 +137,6 @@ angular.module('dongnat.controllers')
 
   $scope.doRefresh = function() {
     $rootScope.$broadcast('home_ctrl::pull_to_refresh');
-    // ProductService.fetch({
-    //   onSuccess: function(data) {
-    //     $scope.products = data;
-    //     ProductService.refresh(data);
-    //     $scope.$broadcast('scroll.refreshComplete');
-    //   },
-    //   onError: function(error) {
-    //     console.log(error);
-    //     $scope.$broadcast('scroll.refreshComplete');
-    //   }
-    // });
   }
 
   $rootScope.$on('home_ctrl::pull_to_refresh_done', function(event, products) {
@@ -160,7 +150,7 @@ angular.module('dongnat.controllers')
     $scope.cache = $cacheFactory('HomeCtrl');
   }
 
-  $scope.products = $scope.cache.get('products');
+  $scope.products = $scope.cache.get('products') || [];
 
   $rootScope.$on('category_slider::before_changed', function() {
     $ionicLoading.show({
@@ -172,5 +162,17 @@ angular.module('dongnat.controllers')
     $ionicLoading.hide();
     $scope.cache.put('products', products);
     $scope.products = products;
+    $scope.noMoreProducts = false;
+  });
+
+  $scope.loadMore = function() {
+    console.log('loading more');
+    $rootScope.$broadcast('home_ctrl::infinite_scroll');
+  }
+
+  $rootScope.$on('category_slider::infinite_scroll_done', function(event, products) {
+    if(products.length == 0) { $scope.noMoreProducts = true; }
+    $scope.products.push.apply($scope.products, products);
+    $scope.$broadcast('scroll.infiniteScrollComplete');
   });
 });

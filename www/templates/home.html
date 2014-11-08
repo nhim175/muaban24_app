@@ -33,6 +33,11 @@
           </span>
         </div>
       </div>
+      <ion-infinite-scroll
+        ng-if="!noMoreProducts"
+        on-infinite="loadMore()"
+        distance="1%">
+      </ion-infinite-scroll>
     </ion-scroll>
   </ion-content>
 </ion-view>
